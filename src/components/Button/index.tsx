@@ -1,11 +1,10 @@
 import React from 'react';
+import { ButtonProps, ButtonType } from './types';
 
-import {ButtonProps, ButtonType} from './types'
-const Button = ({children}: ButtonProps) => {
+import './style.scss';
 
-  return (
-    <button>{children}</button>
-  )
-}
+const Button = ({ children }: ButtonProps) => {
+  return <button className='button button__primary'>{children}</button>;
+};
 export default Button;
-export {ButtonType}
+export { ButtonType };
