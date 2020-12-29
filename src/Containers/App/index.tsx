@@ -4,6 +4,8 @@ import InputLink from '../../components/InputLink';
 import InputFile from '../../components/InputFile';
 import { AppProps, Image } from './types';
 
+import './style.scss';
+
 function App() {
   const imagesArray = [
     {
@@ -66,12 +68,14 @@ function App() {
       <Button type={ButtonType.Primary} onClick={clickHandler}>
         Send
       </Button>
-      {images.map((image) => (
-        <div>
-          <img src={image.url} />
-          {image.description && <span>{image.description}</span>}
-        </div>
-      ))}
+      <div className='images'>
+        {images.map((image) => (
+          <div>
+            <img src={image.url} />
+            {image.description && <span>{image.description}</span>}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

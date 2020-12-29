@@ -6,7 +6,7 @@ export enum ButtonType {
 }
 export type ButtonProps = {
   children: React.ReactChildren | string,
-  type: ButtonType
-  onClick: () => void
-  isDisabled?: boolean
+  type: ButtonType,
+  onClick: () => void,
+  isDisabled?: boolean,
 };
