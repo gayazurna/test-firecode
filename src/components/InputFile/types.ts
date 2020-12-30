@@ -1,3 +1,7 @@
+import React from 'react';
+
 export type InputFileProps = {
-  onChange: () => void,
+  // @ts-ignore
+  onChange: (e) => void
 }
+

@@ -1,6 +1,5 @@
-export interface InputLinkProps {
+export type InputProps = {
   onChange: (value: string) => void,
   value: string,
-  
 }
 
