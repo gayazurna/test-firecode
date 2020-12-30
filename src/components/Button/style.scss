@@ -7,7 +7,9 @@
 
   &__primary {
     background-color: rgb(70, 151, 194);
-    border: 2px solid rgb(169, 166, 166);
+    border: none;
+    outline: none;
+    color: white;
   }
   &__secondary {
     background-color: white;

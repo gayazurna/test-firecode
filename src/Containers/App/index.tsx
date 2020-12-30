@@ -6,6 +6,7 @@ import ImageCard from '../../components/ImageCard';
 import { ImageType, ImageProps } from '../../components/ImageCard/types';
 
 import './style.scss';
+
 const imagesArray: ImageType[] = [
   {
     url: 'https://www.placecage.com/300/150',
@@ -57,24 +58,44 @@ const imagesArray: ImageType[] = [
   },
 ];
 function App() {
-  const [images, setImages] = React.useState<ImageType[]>(imagesArray);
+  const [images, setImages] = React.useState<ImageType[]>([]);
   const [imageUrl, setImageUrl] = React.useState<string>('');
+  const [imagesJson, setImagesJson] = React.useState<ImageType[]>([]);
+
+  // @ts-ignore
+  const onReaderLoad = (e) => {
+    const file = JSON.parse(e.target.result);
+    setImagesJson(file.images);
+  };
+
+  // @ts-ignore
+  const uploadHandler = (e) => {
+    const reader = new FileReader();
+    reader.onload = onReaderLoad;
+    reader.readAsText(e.target.files[0]);
+    console.log('eee', e.target.files[0]);
+  };
 
   const changeHandler = (value: string): void => {
     setImageUrl(value);
   };
   const clickHandler = () => {
-    console.log('dsdd');
     if (imageUrl) {
       const newImages = [{ url: imageUrl }, ...images];
-      console.log('>>', newImages);
       setImages(newImages);
+      setImageUrl('');
+    }
+
+    if (Boolean(imagesJson.length)) {
+      const newImages = [...imagesJson, ...images];
+      setImages(newImages);
+      setImagesJson([]);
     }
   };
   const showPreview = () => {};
   return (
     <div className='App'>
-      <InputFile />
+      <InputFile onChange={uploadHandler} />
       <InputLink
         onChange={(newValue) => changeHandler(newValue)}
         value={imageUrl}
@@ -86,7 +107,8 @@ function App() {
       <div className='App__images'>
         {images.map((image, index) => (
           <ImageCard
-            key={`${image.url}_${index}`}
+            // key={`${image.url}_${index}`}
+            key={index}
             url={image.url}
             description={image.description}
             onClick={showPreview}

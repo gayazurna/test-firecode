@@ -6,7 +6,7 @@ import './style.scss';
 const Button = ({ children, onClick }: ButtonProps) => {
   return (
     <button className='button button__primary' onClick={onClick}>
-      {children}{' '}
+      {children}
     </button>
   );
 };
