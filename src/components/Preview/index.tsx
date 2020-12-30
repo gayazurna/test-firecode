@@ -6,7 +6,7 @@ const Preview = ({ url, description, onClose }: PreviewProps) => {
   return (
     <div className='Preview'>
       <div className='Preview__image'>
-        <img src={url} />
+        <img src={url} alt='Nicolas Cage' />
         <button className='Preview__close' onClick={onClose}>
           X
         </button>

@@ -11,7 +11,7 @@ const ImageCard = ({
   index,
 }: ImageProps) => {
   return (
-    <div className='imageCard'>
+    <div className='ImageCard'>
       <button
         onClick={() =>
           onClick({
@@ -19,14 +19,14 @@ const ImageCard = ({
             description,
           })
         }
-        className='imageCard__img'
+        className='ImageCard__img'
       >
-        <img src={url} />
+        <img src={url} alt='Nicolas Cage' />
       </button>
       {description && (
-        <div className='imageCard__description'>{description}</div>
+        <div className='ImageCard__description'>{description}</div>
       )}
-      <button className='imageCard__remove' onClick={() => onRemove(index)}>
+      <button className='ImageCard__remove' onClick={() => onRemove(index)}>
         Remove
       </button>
     </div>

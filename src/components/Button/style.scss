@@ -1,18 +1,12 @@
-.button {
-  width: 60px;
+.Button {
+  width: 100px;
   height: 30px;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 4px;
   font-size: 16px;
-
-  &__primary {
-    background-color: rgb(70, 151, 194);
-    border: none;
-    outline: none;
-    color: white;
-  }
-  &__secondary {
-    background-color: white;
-    border: 2px solid rgb(70, 151, 194);
-  }
+  background-color: rgb(70, 151, 194);
+  border: none;
+  outline: none;
+  color: white;
+  margin: 20px 0px;
 }
