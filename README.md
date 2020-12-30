@@ -1,4 +1,11 @@
-# Test Task Firecode
-## Start
-npm i
+# Test Task Firecode ⚡️
+
+## Getting Started 🚀
+
+npm i\
 npm start
+
+## Features ⚡️
+
+⚡️ Created with React + TypeScript\
+⚡️ JSON file upload
