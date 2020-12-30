@@ -3,6 +3,7 @@ import Button, { ButtonType } from '../../components/Button';
 import InputLink from '../../components/InputLink';
 import InputFile from '../../components/InputFile';
 import ImageCard from '../../components/ImageCard';
+import Preview from '../../components/Preview';
 import { ImageType, ImageProps } from '../../components/ImageCard/types';
 
 import './style.scss';
@@ -58,9 +59,12 @@ const imagesArray: ImageType[] = [
   },
 ];
 function App() {
-  const [images, setImages] = React.useState<ImageType[]>([]);
+  const [images, setImages] = React.useState<ImageType[]>(imagesArray);
   const [imageUrl, setImageUrl] = React.useState<string>('');
   const [imagesJson, setImagesJson] = React.useState<ImageType[]>([]);
+  const [previewImg, setPreviewImg] = React.useState<ImageType | undefined>(
+    undefined
+  );
 
   // @ts-ignore
   const onReaderLoad = (e) => {
@@ -92,7 +96,19 @@ function App() {
       setImagesJson([]);
     }
   };
-  const showPreview = () => {};
+  const showPreview = (image: ImageType) => {
+    setPreviewImg(image);
+    console.log('IMAGE', image);
+  };
+  const closePreview = () => {
+    setPreviewImg(undefined);
+  };
+  const removeImage = (indexForRemove: number, allImages: ImageType[]) => {
+    const newImages = allImages.filter(
+      (image, index) => indexForRemove !== index
+    );
+    setImages(newImages);
+  };
   return (
     <div className='App'>
       <InputFile onChange={uploadHandler} />
@@ -108,6 +124,8 @@ function App() {
         {images.map((image, index) => (
           <ImageCard
             // key={`${image.url}_${index}`}
+            index={index}
+            onRemove={(indexImage) => removeImage(indexImage, images)}
             key={index}
             url={image.url}
             description={image.description}
@@ -115,6 +133,13 @@ function App() {
           />
         ))}
       </div>
+      {previewImg && (
+        <Preview
+          onClose={closePreview}
+          url={previewImg.url}
+          description={previewImg?.description}
+        />
+      )}
     </div>
   );
 }

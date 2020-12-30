@@ -1,0 +1,29 @@
+.Preview {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &__close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    outline: none;
+    margin: 0;
+    border: none;
+    height: 20px;
+    width: 20px;
+    background-color: blue;
+  }
+  &__image {
+    position: relative;
+  }
+  &__description {
+  }
+}
