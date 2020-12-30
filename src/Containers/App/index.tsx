@@ -39,7 +39,7 @@ function App() {
     if (imageUrl) {
       const newImages = [{ url: imageUrl }, ...images];
       localStorage.setItem('urls', JSON.stringify(newImages));
-      JSON.parse(localStorage.getItem('urls') || '[]');
+      setImages(JSON.parse(localStorage.getItem('urls') || '[]'));
 
       setImages(newImages);
       setImageUrl('');
