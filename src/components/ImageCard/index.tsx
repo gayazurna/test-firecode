@@ -1,22 +1,35 @@
 import React from 'react';
 import { ImageProps } from './types';
-import Button, { ButtonType } from '../Button';
+
 import './style.scss';
 
-const ImageCard = ({ url, description, onClick }: ImageProps) => {
-  const clickHandler = () => {};
+const ImageCard = ({
+  url,
+  description,
+  onClick,
+  onRemove,
+  index,
+}: ImageProps) => {
   return (
-    <button className='imageCard'>
-      <div className='imageCard__img'>
-        <img src={url} />
-      </div>
+    <div className='ImageCard'>
+      <button
+        onClick={() =>
+          onClick({
+            url,
+            description,
+          })
+        }
+        className='ImageCard__img'
+      >
+        <img src={url} alt='Nicolas Cage' />
+      </button>
       {description && (
-        <div className='imageCard__description'>{description}</div>
+        <div className='ImageCard__description'>{description}</div>
       )}
-      <Button type={ButtonType.Primary} onClick={clickHandler}>
+      <button className='ImageCard__remove' onClick={() => onRemove(index)}>
         Remove
-      </Button>
-    </button>
+      </button>
+    </div>
   );
 };
 
