@@ -6,7 +6,7 @@ const InputLink = ({ value, onChange }: InputProps) => {
   return (
     <input
       type='url'
-      placeholder='Type URL here'
+      placeholder='Введите ссылку на изображение'
       value={value}
       onChange={(e) => onChange(e.target.value)}
     />

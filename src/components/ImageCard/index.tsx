@@ -27,7 +27,7 @@ const ImageCard = ({
         <div className='ImageCard__description'>{description}</div>
       )}
       <button className='ImageCard__remove' onClick={() => onRemove(index)}>
-        Remove
+        Удалить
       </button>
     </div>
   );

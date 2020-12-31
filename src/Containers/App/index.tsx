@@ -34,16 +34,14 @@ function App() {
     setImageUrl(value);
   };
 
-  // @ts-ignore
   const clickHandler = () => {
     if (imageUrl) {
       const newImages = [{ url: imageUrl }, ...images];
       localStorage.setItem('urls', JSON.stringify(newImages));
-      setImages(JSON.parse(localStorage.getItem('urls') || '[]'));
-
       setImages(newImages);
       setImageUrl('');
     }
+
     if (Boolean(imagesJson.length)) {
       const newImages = [...imagesJson, ...images];
       setImages(newImages);
@@ -53,7 +51,6 @@ function App() {
 
   const showPreview = (image: ImageType) => {
     setPreviewImg(image);
-    console.log('IMAGE', image);
   };
 
   const closePreview = () => {
@@ -67,6 +64,10 @@ function App() {
     setImages(newImages);
   };
 
+  React.useEffect(() => {
+    setImages(JSON.parse(localStorage.getItem('urls') || '[]'));
+  }, []);
+
   return (
     <div className='App'>
       <div className='App__form'>
@@ -75,7 +76,7 @@ function App() {
           onChange={(newValue) => changeHandler(newValue)}
           value={imageUrl}
         />
-        <Button onClick={clickHandler}>Send</Button>
+        <Button onClick={clickHandler}>Отправить</Button>
       </div>
       <div className='App__images'>
         {images.map((image, index) => (
