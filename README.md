@@ -1,4 +1,4 @@
-# Test Task Firecode ⚡️
+# Images ⚡️
 
 ## Getting Started 🚀
 
